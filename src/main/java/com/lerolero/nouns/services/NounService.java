@@ -39,7 +39,7 @@ public class NounService {
 	}
 
 	public Flux<String> randomNounList(Integer size) {
-		return Flux.range(1, size)
+		return Flux.range(0, size)
 			.flatMap(i -> next())
 			.subscribeOn(Schedulers.boundedElastic());
 	}

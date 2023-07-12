@@ -29,6 +29,9 @@ public class NounCache {
 		if (ids == null || ids.size() == 0) {
 			ids = new ArrayList<>();
 			repo.findAll().map(Noun::getId).doOnNext(i -> ids.add(i)).subscribe();
+			return Mono.fromSupplier(() -> new Noun())
+				.doOnNext(n -> n.setId("0"))
+				.doOnNext(n -> n.setPlural("Hello"));
 		}
 		Noun defaultNoun = new Noun();
 		return Mono.fromSupplier(() -> ids.get((int)(Math.random() * ids.size())))

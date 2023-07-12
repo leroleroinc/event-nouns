@@ -1,0 +1,13 @@
+spring:
+    rabbitmq:
+        host: rabbitmq
+        port: 5672
+        username: guest
+        password: guest
+    cloud:
+        stream:
+            bindings:
+                nounfunction-in-0:
+                    destination: nounrequest
+                nounfunction-out-0:
+                    destination: nounresponse
