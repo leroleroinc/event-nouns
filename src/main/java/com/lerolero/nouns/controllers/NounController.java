@@ -32,7 +32,6 @@ public class NounController {
 
 	@Bean
 	public Function<Flux<String>,Flux<String>> nounfunction() {
-		for (int i = 0; i < 200; i++) System.out.println("NOUNS PROCESSOR");
 		return flux -> flux
 			.doOnNext(size -> System.out.println("NOUNS: Processing " + size))
 			.flatMap(size -> nounService.randomNounList(Integer.parseInt(size)));
